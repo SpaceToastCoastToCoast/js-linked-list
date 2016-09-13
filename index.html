@@ -2,10 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Linked List Visualizer</title>
 </head>
+<style>
+  #controls {
+    width: 260px;
+  }
+  #nodeValue {
+    width: 256px;
+    height: 48px;
+  }
+  #list {
+    width: 250px;
+    position: absolute;
+    float: left;
+  }
+  #main {
+    width: 512px;
+  }
+</style>
 <body>
-
-<script type="text/javascript" src="linkedList.js"></script>
+  <div id="main">
+    <div id="controls">
+      <textarea id="nodeValue">Specify node value</textarea>
+    </div>
+    <div id="list">
+    </div>
+  </div>
+  <script type="text/javascript" src="linkedList.js"></script>
+  <script type="text/javascript" src="linkedListVisualizer.js"></script>
 </body>
 </html>
