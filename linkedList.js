@@ -21,6 +21,7 @@ function linkedListGenerator(){
   //adds a value to the end of a list
   module.add = function(value) {
     let addedNode = {
+      prev: null,
       value: value,
       next: null
     };
@@ -28,6 +29,7 @@ function linkedListGenerator(){
     if(head === null) {
       head = addedNode;
     } else {
+      addedNode.prev = module.get(indices);
       indices++;
     }
 
@@ -44,8 +46,14 @@ function linkedListGenerator(){
     if(module.get(index) !== false) {
       if(index > 0) {
         module.get(index - 1).next = module.get(index).next;
+        if(index < indices) {
+          module.get(index + 1).prev = module.get(index).prev;
+        } else {
+          module.get(index - 1).next = null;
+        }
       } else {
         head = head.next;
+        head.prev = null;
       }
       tail = module.get(indices - 1);
       indices--;
@@ -75,14 +83,21 @@ function linkedListGenerator(){
 
   module.insert = function(value, index) {
     let addedNode = {
+      prev: null,
       value: value,
       next: null
     };
     if(module.get(index) !== false) {
       if(index > 0) {
-        addedNode.next = module.get(index);
-        module.get(index - 1).next = addedNode;
+        if(index <= indices) {
+          addedNode.prev = module.get(index).prev;
+          addedNode.next = module.get(index);
+          module.get(index - 1).next = addedNode;
+        } else {
+          module.add(value);
+        }
       } else {
+        addedNode.prev = null;
         addedNode.next = head;
         head = addedNode;
       }
