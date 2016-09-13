@@ -6,22 +6,33 @@
 function linkedListGenerator(){
   module = {};
 
-  linkedList = {};
+  linkedListData = {};
+
+  let head = null;
+  let tail = null;
 
   module.getHead = function() {
-    if(linkedList.data !== undefined) {
-      return linkedList.data;
-    }
-    return null;
+    return head;
   };
 
   module.getTail = function() {
-
+    return tail;
   };
 
   //adds a value to the end of a list
   module.add = function(value) {
+    let addedNode = {
+      value: value,
+      next: null
+    };
 
+    if(head === null) {
+      head = addedNode;
+    }
+
+    tail = addedNode;
+
+    return addedNode;
   };
 
   module.remove = function(index) {
