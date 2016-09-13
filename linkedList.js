@@ -4,9 +4,7 @@
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator(){
-  module = {};
-
-  linkedListData = {};
+  let module = {};
 
   let head = null;
   let tail = null;
@@ -44,13 +42,12 @@ function linkedListGenerator(){
 
   module.remove = function(index) {
     if(module.get(index) !== false) {
-      if(index < 0) {
-        console.log('before:', module.get(index - 1).next);
+      if(index > 0) {
         module.get(index - 1).next = module.get(index).next;
-        console.log('after:', module.get(index - 1).next);
       } else {
-        head = module.get(index).next;
+        head = head.next;
       }
+      tail = module.get(indices - 1);
       indices--;
     } else {
       return false;
