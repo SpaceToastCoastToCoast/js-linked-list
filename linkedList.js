@@ -6,8 +6,13 @@
 function linkedListGenerator(){
   module = {};
 
-  module.getHead = function() {
+  linkedList = {};
 
+  module.getHead = function() {
+    if(linkedList.data !== undefined) {
+      return linkedList.data;
+    }
+    return null;
   };
 
   module.getTail = function() {
