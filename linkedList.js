@@ -29,15 +29,16 @@ function linkedListGenerator(){
     if(head === null) {
       head = addedNode;
     } else {
-      addedNode.prev = module.get(indices);
       indices++;
     }
+    addedNode.prev = module.get(indices);
 
     if(tail !== null) {
       tail.next = addedNode;
     }
 
     tail = addedNode;
+    tail.next = module.get(0);
 
     return addedNode;
   };
