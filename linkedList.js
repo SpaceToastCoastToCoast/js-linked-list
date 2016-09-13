@@ -74,7 +74,22 @@ function linkedListGenerator(){
   };
 
   module.insert = function(value, index) {
-
+    let addedNode = {
+      value: value,
+      next: null
+    };
+    if(module.get(index) !== false) {
+      if(index > 0) {
+        addedNode.next = module.get(index);
+        module.get(index - 1).next = addedNode;
+      } else {
+        addedNode.next = head;
+        head = addedNode;
+      }
+      indices++;
+    } else {
+      return false;
+    }
   };
 
   return module;
