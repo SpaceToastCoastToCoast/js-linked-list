@@ -44,11 +44,18 @@ function linkedListGenerator(){
 
   module.remove = function(index) {
     if(module.get(index) !== false) {
-      console.log(module.get(index - 1));
-      module.get(index - 1).next = module.get(index).next;
-      console.log(module.get(index - 1));
+      if(index < 0) {
+        console.log('before:', module.get(index - 1).next);
+        module.get(index - 1).next = module.get(index).next;
+        console.log('after:', module.get(index - 1).next);
+      } else {
+        head = module.get(index).next;
+      }
+      indices--;
+    } else {
+      return false;
     }
-    indices--;
+
   };
 
   module.get = function(index) {
