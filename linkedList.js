@@ -3,7 +3,7 @@
  * @description  Main Module
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
-function linkedListGenerator(){
+const linkedListGenerator = function(){
   let module = {};
 
   let head = null;
@@ -16,6 +16,13 @@ function linkedListGenerator(){
 
   module.getTail = function() {
     return tail;
+  };
+
+  module.getLength = function() {
+    if(head === null) {
+      return 0;
+    }
+    return (indices + 1);
   };
 
   //adds a value to the end of a list
@@ -109,4 +116,4 @@ function linkedListGenerator(){
   };
 
   return module;
-}
+};
