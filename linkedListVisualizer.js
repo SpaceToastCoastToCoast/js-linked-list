@@ -15,6 +15,7 @@ const linkedListVisualizer = function() {
     list.add(nodeValue.value);
     console.log(list.getTail());
     vis.updateDisplay();
+    nodeValue.value += '(' + list.getLength() + ')';
   };
 
   addNodeButton.addEventListener('click', vis.addNode);
@@ -23,8 +24,11 @@ const linkedListVisualizer = function() {
     listDiv.innerHTML = "";
     for(let i = 0; i < list.getLength(); i++) {
       let nodeDiv = document.createElement('div');
-      let nodeContent = document.createTextNode(list.get(i).value);
-      nodeDiv.appendChild(nodeContent);
+      nodeDiv.innerHTML = list.get(i).value;
+      nodeDiv.className = 'nodeListEntry';
+      nodeDiv.style.padding = "2px";
+      nodeDiv.style.color = "#c00000";
+      nodeDiv.style.backgroundColor = 'rgb(' + i * 20 + ', ' + i * 10 +', ' + i * 10 +')';
       listDiv.appendChild(nodeDiv);
     }
   };

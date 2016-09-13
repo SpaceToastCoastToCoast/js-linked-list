@@ -75,7 +75,7 @@ const linkedListGenerator = function(){
     let foundNode = false;
     let node = head;
 
-    if(node !== null) {
+    if(node !== null && index >= 0) {
       for(let i = 0; i <= indices; i++) {
         if(i === index) {
           foundNode = node;
