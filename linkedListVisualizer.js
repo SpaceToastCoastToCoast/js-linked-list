@@ -40,16 +40,20 @@ const linkedListVisualizer = function() {
   addNodeButton.addEventListener('click', vis.addNode);
 
   vis.removeAt = function() {
-    let removeIndex = parseInt(removeNode.options[removeNode.selectedIndex].value);
-    console.log(list.remove(removeIndex));
+    if(removeNode.options[removeNode.selectedIndex] !== undefined) {
+      let removeIndex = parseInt(removeNode.options[removeNode.selectedIndex].value);
+      list.remove(removeIndex);
+    }
     vis.updateDisplay();
   };
 
   removeButton.addEventListener('click', vis.removeAt);
 
   vis.insertAt = function() {
-    let insertIndex = parseInt(insertNode.options[insertNode.selectedIndex].value);
-    list.insert(nodeValue.value, insertIndex);
+    if(insertNode.options[insertNode.selectedIndex] !== undefined) {
+      let insertIndex = parseInt(insertNode.options[insertNode.selectedIndex].value);
+      list.insert(nodeValue.value, insertIndex);
+    }
     vis.updateDisplay();
   };
 
