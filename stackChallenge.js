@@ -13,14 +13,17 @@ const stackChallenge = function() {
 
   saveButton.addEventListener('click', stack.saveNode);
 
-  stack.updateDisplay = function() {
+  stack.dump = function() {
+    //clear our list each time we initialize dump
     listDiv.innerHTML = "";
 
-    //update our list display and our dropdowns to reflect new state
-    for(let i = 0; i < list.getLength(); i++) {
-
+    //dump our list to the page from tail to head
+    for(let i = list.getLength() - 1; i >= 0; i--) {
+      listDiv.innerHTML += "<p>" + list.get(i) + "</p>";
     }
   };
+
+  dumpButton.addEventListener('click', stack.dump);
 
   return stack;
 
