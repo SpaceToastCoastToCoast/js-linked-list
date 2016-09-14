@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Linked List Visualizer</title>
+  <title>Linked List Stack Dumper</title>
 </head>
 <style>
 
@@ -10,12 +10,17 @@
     width: 256px;
     height: 48px;
   }
+  #controls {
+    width: 256px;
+  }
 
 </style>
 <body>
+  <h1>Circular Linked List Stack Dumper</h1>
   <div id="main">
+    <textarea id="textBox">Specify node value here</textarea>
     <div id="controls">
-      <textarea id="textBox">Specify node value here</textarea>
+      <div id="infoBox">Specify node value in the field.</div>
       <button id="saveButton">Save as Node</button>
       <button id="dumpButton">Dump Stack</button>
     </div>
