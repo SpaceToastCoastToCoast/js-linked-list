@@ -61,7 +61,7 @@ const linkedListGenerator = function(){
         }
       } else {
         head = head.next;
-        head.prev = null;
+        head.prev = module.get(indices - 1);
       }
       tail = module.get(indices - 1);
       indices--;
