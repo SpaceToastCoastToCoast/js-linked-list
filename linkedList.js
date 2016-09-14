@@ -57,7 +57,7 @@ const linkedListGenerator = function(){
         if(index < indices) {
           module.get(index + 1).prev = module.get(index).prev;
         } else {
-          module.get(index - 1).next = null;
+          module.get(index - 1).next = head;
         }
       } else {
         head = head.next;
