@@ -29,15 +29,16 @@ function linkedListGenerator(){
     if(head === null) {
       head = addedNode;
     } else {
-      addedNode.prev = module.get(indices);
       indices++;
     }
+    addedNode.prev = module.get(indices);
 
     if(tail !== null) {
       tail.next = addedNode;
     }
 
     tail = addedNode;
+    tail.next = module.get(0);
 
     return addedNode;
   };
@@ -67,7 +68,7 @@ function linkedListGenerator(){
     let foundNode = false;
     let node = head;
 
-    if(node !== null) {
+    if(node !== null && index >= 0) {
       for(let i = 0; i <= indices; i++) {
         if(i === index) {
           foundNode = node;
