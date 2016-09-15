@@ -1,62 +1,4 @@
-/**
-<<<<<<< HEAD
- * @name  linkedListGenerator
- * @description  Main Module
- * @return {Object} an object exposing methods to be used to manipulate a linked list
- */
-const linkedListGenerator = function(){
-  let module = {};
-
-  let head = null;
-  let tail = null;
-  let indices = 0;
-
-  module.getHead = function() {
-    return head;
-  };
-
-  module.getTail = function() {
-    return tail;
-  };
-
-  module.getLength = function() {
-    if(head === null) {
-      return 0;
-    }
-    return (indices + 1);
-  };
-
-  //adds a value to the end of a list
-  module.add = function(value) {
-    let addedNode = {
-      prev: null,
-      value: value,
-      next: null
-    };
-
-    //if we have no head, make this new node the head
-    if(head === null) {
-      head = addedNode;
-      //get the last entry and make it the previous of our added node
-      head.prev = module.get(indices);
-    } else {
-      //get the last entry and make it the previous of our added node
-      addedNode.prev = module.get(indices);
-      //update the head's prev to point to our new node, which will be our new tail
-      head.prev = addedNode;
-      //if we already have a head, increment the number of entries
-      indices++;
-    }
-
-    //if we already have a tail, update its next to point to the new node
-    if(tail !== null) {
-      tail.next = addedNode;
-    }
-
-    //make the new node be the tail, and set its next to point to the head
-    tail = addedNode;
-    tail.next = head;
-=======
+/*
 * @name  linkedListNode
 * @description Class representing a Node
 * @param String value: the value of the node
@@ -152,21 +94,10 @@ class LinkedList {
     //make the new node be the tail, and set its next to point to the head
     this.tail = addedNode;
     this.tail.next = this.head;
->>>>>>> objectOriented
 
     return addedNode;
   }
 
-<<<<<<< HEAD
-  module.remove = function(index) {
-    if(module.get(index) !== false) {
-      let toRemove = module.get(index);
-      console.log(toRemove);
-      //if we are not on the head
-      if(index > 0) {
-        //the node before toRemove's next should point to toRemove's next
-        console.log(toRemove.prev);
-=======
   remove(index) {
     //if the index exists in the list
     if(this.getAt(index) !== false) {
@@ -174,36 +105,19 @@ class LinkedList {
       let toRemove = this.getAt(index);
       if(index > 0) {
         //the node before toRemove's next should point to toRemove's next
->>>>>>> objectOriented
         toRemove.prev.next = toRemove.next;
         if(index < indices) {
           //if we are not on the tail
           toRemove.next.prev = toRemove.prev;
         } else {
           //if we are on the tail
-<<<<<<< HEAD
-          tail = toRemove.prev;
-          tail.next = head;
-          head.prev = tail;
-=======
           this.tail = toRemove.prev;
           this.tail.next = this.head;
           this.head.prev = this.tail;
->>>>>>> objectOriented
         }
       } else {
         //if we are on the head
         //the head is now whatever was after it
-<<<<<<< HEAD
-        head = head.next;
-        //the new head's prev is the tail
-        head.prev = tail;
-        //the tail's next must be the head
-        tail.next = head;
-      }
-      indices--;
-      tail = module.get(indices);
-=======
         this.head = this.head.next;
         //the new head's prev is the tail
         this.head.prev = this.tail;
@@ -212,7 +126,6 @@ class LinkedList {
       }
       this._indices--;
       this.tail = this.getAt(this._indices);
->>>>>>> objectOriented
     } else {
       return false;
     }
@@ -222,14 +135,9 @@ class LinkedList {
     let foundNode = false; //default case, node not found
     let node = this.head; //start at the head, using a temp variable to traverse
 
-<<<<<<< HEAD
-    if(node !== null && index >= 0) {
-      for(let i = 0; i <= indices; i++) {
-=======
     //if we have a head and our index is valid
     if(node !== null && index >= 0) {
       for(let i = 0; i <= this._indices; i++) {
->>>>>>> objectOriented
         if(i === index) {
           //if our index is present in the list, return what's there
           foundNode = node;
@@ -243,20 +151,7 @@ class LinkedList {
     }
 
     return foundNode;
-<<<<<<< HEAD
-  };
 
-  module.insert = function(value, index) {
-    let addedNode = {
-      prev: null,
-      value: value,
-      next: null
-    };
-    if(module.get(index) !== false) {
-      let insertAt = module.get(index);
-      if(index > 0) {
-        if(index <= indices) {
-=======
   }
 
   insert(value, index) {
@@ -268,7 +163,6 @@ class LinkedList {
       if(index > 0) {
         //if we are not inserting at the end
         if(index <= this._indices) {
->>>>>>> objectOriented
           //new node's previous is the prev of whatever was already in the position
           addedNode.prev = insertAt.prev;
           //new node's next is whatever was already in the position
@@ -277,11 +171,7 @@ class LinkedList {
           insertAt.prev.next = addedNode;
           //the moved position's prev must point to the new node
           insertAt.prev = addedNode;
-<<<<<<< HEAD
-          indices++;
-=======
           this._indices++;
->>>>>>> objectOriented
         } else {
           //if we are inserting at the end we simply call add
           this.add(value);
@@ -289,18 +179,6 @@ class LinkedList {
       } else {
         //if we are inserting at the head
         //make the new head's prev point to tail
-<<<<<<< HEAD
-        addedNode.prev = tail;
-        //make the new head's next point to current head
-        addedNode.next = head;
-        //make the old head's prev point to the added node
-        head.prev = addedNode;
-        //make the old tail's next point to the added node
-        tail.next = addedNode;
-        //make the head be our new node
-        head = addedNode;
-        indices++;
-=======
         addedNode.prev = this.tail;
         //make the new head's next point to current head
         addedNode.next = this.head;
@@ -311,7 +189,6 @@ class LinkedList {
         //make the head be our new node
         this.head = addedNode;
         this._indices++;
->>>>>>> objectOriented
       }
     } else {
       //if the index doesn't exist
@@ -319,10 +196,6 @@ class LinkedList {
     }
   }
 
-<<<<<<< HEAD
-  return module;
-};
-=======
   toString() {
     //custom toString, describes all items in the list
     let str = "";
@@ -332,4 +205,3 @@ class LinkedList {
     return str;
   }
 }
->>>>>>> objectOriented
