@@ -1,10 +1,7 @@
 const linkedListVisualizer = function() {
   let vis = {};
-<<<<<<< HEAD
-  let list = linkedListGenerator();
-=======
+
   let list = new LinkedList();
->>>>>>> objectOriented
 
   let nodeValue = document.getElementById('nodeValue');
   let controlsDiv = document.getElementById('controls');
@@ -54,11 +51,7 @@ const linkedListVisualizer = function() {
   removeButton.addEventListener('click', vis.removeAt);
 
   vis.insertAt = function() {
-<<<<<<< HEAD
     if(insertNode.options[insertNode.selectedIndex] !== undefined) {
-=======
-    if(insertNode.options[removeNode.selectedIndex] !== undefined) {
->>>>>>> objectOriented
       let insertIndex = parseInt(insertNode.options[insertNode.selectedIndex].value);
       list.insert(nodeValue.value, insertIndex);
     }
@@ -75,15 +68,10 @@ const linkedListVisualizer = function() {
     insertNode.innerHTML = "";
 
     //update our list display and our dropdowns to reflect new state
-<<<<<<< HEAD
-    for(let i = 0; i < list.getLength(); i++) {
-      let nodeDiv = document.createElement('div');
-      nodeDiv.innerHTML = list.get(i).value;
-=======
+
     for(let i = 0; i < list.length; i++) {
       let nodeDiv = document.createElement('div');
       nodeDiv.innerHTML = list.getAt(i).customToString();
->>>>>>> objectOriented
       nodeDiv.className = 'nodeListEntry';
       nodeDiv.style.padding = "2px";
       nodeDiv.style.color = "#c00000";
