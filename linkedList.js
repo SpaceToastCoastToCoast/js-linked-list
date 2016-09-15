@@ -104,15 +104,16 @@ class LinkedList {
       //if we are not on the head
       let toRemove = this.getAt(index);
       if(index > 0) {
+        //the node before toRemove's next should point to toRemove's next
         toRemove.prev.next = toRemove.next;
-        if(index < this._indices) {
+        if(index < indices) {
           //if we are not on the tail
           toRemove.next.prev = toRemove.prev;
         } else {
           //if we are on the tail
-          this.tail = toRemove.prev.prev;
+          this.tail = toRemove.prev;
           this.tail.next = this.head;
-          this.head.prev = this.getAt(this._indices);
+          this.head.prev = this.tail;
         }
       } else {
         //if we are on the head
@@ -123,8 +124,8 @@ class LinkedList {
         //the tail's next must be the head
         this.tail.next = this.head;
       }
-      this.tail = this.getAt(this._indices - 1);
       this._indices--;
+      this.tail = this.getAt(this._indices);
     } else {
       return false;
     }
