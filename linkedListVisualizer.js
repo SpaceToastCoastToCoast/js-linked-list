@@ -1,6 +1,6 @@
 const linkedListVisualizer = function() {
   let vis = {};
-  let list = linkedListGenerator();
+  let list = new LinkedList();
 
   let nodeValue = document.getElementById('nodeValue');
   let controlsDiv = document.getElementById('controls');
@@ -40,16 +40,20 @@ const linkedListVisualizer = function() {
   addNodeButton.addEventListener('click', vis.addNode);
 
   vis.removeAt = function() {
-    let removeIndex = parseInt(removeNode.options[removeNode.selectedIndex].value);
-    console.log(list.remove(removeIndex));
+    if(removeNode.options[removeNode.selectedIndex] !== undefined) {
+      let removeIndex = parseInt(removeNode.options[removeNode.selectedIndex].value);
+      list.remove(removeIndex);
+    }
     vis.updateDisplay();
   };
 
   removeButton.addEventListener('click', vis.removeAt);
 
   vis.insertAt = function() {
-    let insertIndex = parseInt(insertNode.options[insertNode.selectedIndex].value);
-    list.insert(nodeValue.value, insertIndex);
+    if(insertNode.options[removeNode.selectedIndex] !== undefined) {
+      let insertIndex = parseInt(insertNode.options[insertNode.selectedIndex].value);
+      list.insert(nodeValue.value, insertIndex);
+    }
     vis.updateDisplay();
   };
 
@@ -63,9 +67,9 @@ const linkedListVisualizer = function() {
     insertNode.innerHTML = "";
 
     //update our list display and our dropdowns to reflect new state
-    for(let i = 0; i < list.getLength(); i++) {
+    for(let i = 0; i < list.length; i++) {
       let nodeDiv = document.createElement('div');
-      nodeDiv.innerHTML = list.get(i).value;
+      nodeDiv.innerHTML = list.getAt(i).customToString();
       nodeDiv.className = 'nodeListEntry';
       nodeDiv.style.padding = "2px";
       nodeDiv.style.color = "#c00000";
