@@ -106,7 +106,7 @@ class LinkedList {
       if(index > 0) {
         //the node before toRemove's next should point to toRemove's next
         toRemove.prev.next = toRemove.next;
-        if(index < indices) {
+        if(index < this._indices) {
           //if we are not on the tail
           toRemove.next.prev = toRemove.prev;
         } else {
