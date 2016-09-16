@@ -135,17 +135,19 @@ describe('Linked List Generator', function() {
         // console.log(newLinkedListC.getHead());
         expect(newLinkedListC.getHead().value).to.equal('http://eff.org');
         expect(newLinkedListC.getTail().value).to.equal('http://devleague.com');
+        //new tests
         expect(newLinkedListC.getHead().prev.value).to.equal(newLinkedListC.getTail().value);
         expect(newLinkedListC.getHead().next.value).to.equal(newLinkedListC.getTail().value);
         expect(newLinkedListC.getTail().prev.value).to.equal(newLinkedListC.getHead().value);
         expect(newLinkedListC.getTail().next.value).to.equal(newLinkedListC.getHead().value);
 
         // add another node
-        newLinkedListC.add('http://xkcd.org');
+        expect(function() {newLinkedListC.add('http://xkcd.org');}).to.change(newLinkedListC.getTail(), 'next');
 
         // test!
         expect(newLinkedListC.getHead().value).to.equal('http://eff.org');
         expect(newLinkedListC.getTail().value).to.equal('http://xkcd.org');
+        //new tests
         expect(newLinkedListC.getHead().prev.value).to.equal(newLinkedListC.getTail().value);
         expect(newLinkedListC.getHead().next.value).to.equal(newLinkedListC.getTail().prev.value);
         expect(newLinkedListC.getTail().prev.value).to.equal(newLinkedListC.getHead().next.value);
