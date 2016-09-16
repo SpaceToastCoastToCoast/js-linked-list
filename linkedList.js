@@ -62,11 +62,9 @@ const linkedListGenerator = function(){
   module.remove = function(index) {
     if(module.get(index) !== false) {
       let toRemove = module.get(index);
-      console.log(toRemove);
       //if we are not on the head
       if(index > 0) {
         //the node before toRemove's next should point to toRemove's next
-        console.log(toRemove.prev);
         toRemove.prev.next = toRemove.next;
         if(index < indices) {
           //if we are not on the tail
